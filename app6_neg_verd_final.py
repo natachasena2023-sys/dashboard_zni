@@ -553,6 +553,34 @@ def main():
     plot_if_not_empty(plot_heatmap, df_filtered)
     plot_if_not_empty(plot_tendencia_anual, df_filtered)
 
+    st.markdown("")
+
+    col1, col2 = st.columns([1, 2])
+
+    with col1:
+        try:
+            st.image(
+                "img/mapa_basura_cero.jpg",
+                caption="Fuente: Datos abiertos del Gobierno de Colombia (SSPD y MinVivienda, 2023–2024)",
+                use_container_width=True,
+            )
+
+        except FileNotFoundError:
+            st.image(
+                "https://via.placeholder.com/300x200?text=Imagen+Ecológica",
+                caption="Placeholder ecológico",
+            )
+
+    with col2:
+        st.markdown(
+            """
+        El mapa muestra la **distribución geográfica de 12 proyectos del Programa Basura Cero**, 
+        con una inversión total aproximada de **$119.212 millones de pesos**.  
+        Estas iniciativas están orientadas a la **gestión integral de residuos**, el **aprovechamiento de materiales reciclables** y el **cierre progresivo de botaderos**.
+
+    Explora el mapa para conocer en qué departamentos se están desarrollando los proyectos, su inversión y fase de avance. 
+    """
+        )
     # Pie de página
     st.caption("Fuente de datos: Ministerio de Ambiente y Desarrollo Sostenible.")
 
