@@ -196,11 +196,6 @@ with st.container(border=True):
     )
     st.plotly_chart(fig_barras,use_container_width=True)
 
-
-
-
-
-
 ###########Indicadores##############
 
 st.subheader('Indicadores de Energía Activa por año en Millones de kWh')

@@ -1,14 +1,10 @@
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import re
-
 # ============================================================
 # 🧩 ANÁLISIS DE NEGOCIOS VERDES Y SU RELACIÓN CON BASURA CERO
 # ============================================================
 
 # === Librerías ===
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 import re
 
