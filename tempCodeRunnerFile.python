@@ -1,0 +1,19 @@
+import pandas as pd
+
+# URL del archivo CSV
+url = "https://github.com/natachasena2023-sys/bootcam_analisis/raw/refs/heads/main/Listado_de_Negocios_Verdes_20251025.csv"
+
+# Cargar el CSV en un DataFrame de pandas
+df = pd.read_csv(url)
+
+# Mostrar las primeras filas para inspeccionar
+print(df.head())
+
+# Suponiendo columnas como 'Nombre', 'Categoria', 'Ubicacion', 'Fecha_Registro'
+df_organizado = df[['Nombre', 'Categoria', 'Ubicacion', 'Fecha_Registro']].copy()
+
+# Ordenar por fecha
+df_organizado = df_organizado.sort_values(by='Fecha_Registro')
+
+# Guardar como nuevo CSV organizado
+df_organizado.to_csv('negocios_verdes_organizados.csv', index=False)
