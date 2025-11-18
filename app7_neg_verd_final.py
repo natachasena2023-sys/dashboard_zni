@@ -367,6 +367,47 @@ def resumen_texto(df):
         * Sector predominante: **{top_sector}**
         * Años cubiertos: **{year_min} – {year_max}**
     """)
+
+@st.cache_data(show_spinner=False)
+def obtener_opciones_filtros(df: pd.DataFrame):
+    """Precalcula y cachea las opciones únicas para los filtros del expander."""
+    # Opciones de REGIÓN
+    if "REGIÓN" in df.columns:
+        regiones = sorted(
+            region
+            for region in df["REGIÓN"].dropna().unique().tolist()
+            if str(region).strip()
+        )
+    else:
+        regiones = []
+
+    # Opciones de SECTOR
+    if "SECTOR" in df.columns:
+        sectores = sorted(
+            sector
+            for sector in df["SECTOR"].dropna().unique().tolist()
+            if str(sector).strip()
+        )
+    else:
+        sectores = []
+
+    # Opciones de RELACIÓN BASURA CERO
+    if "RELACIÓN BASURA CERO" in df.columns:
+        categorias_relacion = sorted(
+            {
+                categoria.strip()
+                for valor in df["RELACIÓN BASURA CERO"].dropna()
+                for categoria in str(valor).split(",")
+                if categoria.strip()
+                and categoria.strip().lower()
+                not in {"no aplica", "no disponible"}
+            }
+        )
+    else:
+        categorias_relacion = []
+
+    return regiones, sectores, categorias_relacion
+
 # ============================================================
 #                     --- APP UI ---
 # ============================================================
@@ -799,6 +840,9 @@ def main():
                     " con Basura Cero frente a las que aún no muestran esa alineación."
                 )
 
+                    # Precalcular y cachear opciones de filtros para mejorar rendimiento
+            regiones_op, sectores_op, categorias_relacion_op = obtener_opciones_filtros(df)
+
             if not df.empty:
                 with st.expander("📊 Ver Listado_de_Negocios_Verdes"):
                     
@@ -814,65 +858,53 @@ def main():
                     )
                     filtered_df = df.copy()
 
-                    if "REGIÓN" in df.columns:
-                        regiones = sorted(
-                            region
-                            for region in df["REGIÓN"].dropna().unique().tolist()
-                            if str(region).strip()
-                        )
-                        seleccion_regiones = st.multiselect(
-                            "Selecciona regiones",
-                            regiones,
-                            help="Elige una o más regiones para focalizar la vista de la tabla.",
-                        )
-                        if seleccion_regiones:
-                            filtered_df = filtered_df[filtered_df["REGIÓN"].isin(seleccion_regiones)]
+                    if "REGIÓN" in df.columns and regiones_op:
+                            seleccion_regiones = st.multiselect(
+                                "Selecciona regiones",
+                                regiones_op,
+                                help="Elige una o más regiones para focalizar la vista de la tabla.",
+                            )
+                            if seleccion_regiones:
+                                filtered_df = filtered_df[
+                                    filtered_df["REGIÓN"].isin(seleccion_regiones)]
 
-                    if "SECTOR" in df.columns:
-                        sectores = sorted(
-                            sector
-                            for sector in df["SECTOR"].dropna().unique().tolist()
-                            if str(sector).strip()
-                        )
+                    if "SECTOR" in df.columns and sectores_op:
                         seleccion_sectores = st.multiselect(
                             "Selecciona sectores",
-                            sectores,
+                            sectores_op,
                             help="Delimita la tabla a los sectores de tu interés.",
                         )
                         if seleccion_sectores:
-                            filtered_df = filtered_df[filtered_df["SECTOR"].isin(seleccion_sectores)]
-
-                    if "RELACIÓN BASURA CERO" in df.columns:
-                        categorias_relacion = sorted(
-                            {
-                                categoria.strip()
-                                for valor in df["RELACIÓN BASURA CERO"].dropna()
-                                for categoria in str(valor).split(",")
-                                if categoria.strip()
-                                and categoria.strip().lower()
-                                not in {"no aplica", "no disponible"}
-                            }
-                        )
+                            filtered_df = filtered_df[
+                                filtered_df["SECTOR"].isin(seleccion_sectores)]
+                            
+                    if "RELACIÓN BASURA CERO" in df.columns and categorias_relacion_op:
                         seleccion_relacion = st.multiselect(
                             "Categorías Basura Cero",
-                            categorias_relacion,
+                            categorias_relacion_op,
                             help=(
                                 "Filtra iniciativas que mencionen explícitamente las categorías "
                                 "asociadas al programa Basura Cero."
                             ),
                         )
                         if seleccion_relacion:
-                            mask_relacion = filtered_df["RELACIÓN BASURA CERO"].fillna("")
-                            mask_relacion = mask_relacion.apply(
-                                lambda texto: any(
-                                    categoria in [valor.strip() for valor in str(texto).split(",")]
-                                    for categoria in seleccion_relacion
-                                )
+                            # Construir un patrón de búsqueda eficiente
+                            import re as _re
+
+                            patron = "|".join(
+                                _re.escape(cat) for cat in seleccion_relacion
+                            )
+                            series_rel = (
+                                filtered_df["RELACIÓN BASURA CERO"]
+                                .fillna("")
+                                .astype(str)
+                            )
+                            mask_relacion = series_rel.str.contains(
+                                patron, regex=True
                             )
                             filtered_df = filtered_df[mask_relacion]
 
                     st.dataframe(filtered_df, use_container_width=True)
-                    
     
         
         st.markdown(
