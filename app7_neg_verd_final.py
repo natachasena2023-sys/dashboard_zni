@@ -163,6 +163,24 @@ def tiene_relacion_basura_cero(valor):
         return False
     valor = str(valor).strip().lower()
     return valor not in ["", "no aplica", "no disponible"]
+def plot_tendencia_anual(df):
+    """Línea de tiempo: negocios registrados por año."""
+    df_anual = df.dropna(subset=["AÑO"])
+
+    if df_anual.empty:
+        st.info("No hay datos válidos de 'AÑO' para mostrar la tendencia anual.")
+        return
+
+    conteo = df_anual.groupby("AÑO").size()
+
+    fig, ax = plt.subplots(figsize=(7, 3))
+    sns.lineplot(x=conteo.index, y=conteo.values, marker="o", color="#4E7F96", ax=ax)
+
+    ax.set_title("Tendencia anual de negocios verdes", fontsize=12, weight="bold")
+    ax.set_xlabel("Año")
+    ax.set_ylabel("Número de registros")
+
+    st.pyplot(fig)
 
 
 # ============================================================
@@ -507,6 +525,13 @@ def main():
                 "No se puede generar la visualización. Verifica el dataset y la limpieza aplicada."
             )
 
+        # 📈 -----------------------------------------------------------
+        # TENDENCIA ANUAL
+        # --------------------------------------------------------------
+        st.markdown("### 📈 Tendencia anual de negocios verdes")
+        plot_tendencia_anual(df)
+        st.markdown("")  # Espacio visual
+
         if (
             not df.empty
             and "RELACIÓN BASURA CERO" in df.columns
@@ -515,10 +540,10 @@ def main():
             st.markdown("### ♻️ Relación con el programa Basura Cero")
             st.markdown(
                 """
-    La siguiente clasificación busca identificar cómo cada iniciativa se conecta con los pilares del
-    programa **Basura Cero**. Se analizan palabras clave en la descripción, sector y subsector para
-    agrupar los proyectos según su enfoque.
-    """
+                La siguiente clasificación busca identificar cómo cada iniciativa se conecta con los pilares del
+                programa **Basura Cero**. Se analizan palabras clave en la descripción, sector y subsector para
+                agrupar los proyectos según su enfoque.
+                """
             )
 
             resumen_relacion = (
