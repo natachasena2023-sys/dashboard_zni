@@ -438,12 +438,6 @@ def main():
         ---
         **Tip:** Desde la sección Inicio puedes descargar la base normalizada 
         y acceder a la visualización de sectores líderes.
-
-        pnorena@unal.edu.co,
-        thomasmedina519@gmail.com,
-        angiecarorumer333@gmail.com,
-        ochoa0917@hotmail.com,
-        juanignaciogarcia7@gmail.com,
         """
     )
 
@@ -922,6 +916,16 @@ def main():
                     unsafe_allow_html=True,
                 )
 
+        st.markdown("""
+            <div style="text-align: center; font-size: 14px;">
+                <strong>Autores:</strong><br>
+                Paulina Noreña · pnorena@unal.edu.co<br>
+                Thomas Medina · thomasmedina519@gmail.com<br>
+                Angie Ruiz · angiecarorumer333@gmail.com<br>
+                Natacha Ochoa · ochoa0917@hotmail.com<br>
+                Juan Ignacio García · juanignaciogarcia7@gmail.com
+            </div>
+            """, unsafe_allow_html=True)
         st.markdown(
                     """
             💚 *Proyecto académico realizado con Streamlit - Inspirado en la sostenibilidad y el diseño ecológico.*  
