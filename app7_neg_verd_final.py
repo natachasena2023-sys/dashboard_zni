@@ -910,7 +910,7 @@ def main():
         st.markdown(
             """
             <div class="banner-inferior">
-                🌿 Gracias por apoyar los Negocios Ecológicos 🌿
+                🌿 autores 🌿
                 Paulina Noreña · pnorena@unal.edu.co<br>
                 Thomas Medina · thomasmedina519@gmail.com<br>
                 Angie Ruiz · angiecarorumer333@gmail.com<br>
