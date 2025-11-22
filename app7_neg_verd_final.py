@@ -252,6 +252,10 @@ def load_data(dummy: int = 1) -> pd.DataFrame:
         if col in df.columns:
             df[col] = df[col].apply(limpiar_numeros)
 
+    # Normalizar SECTOR
+    if "SECTOR" in df.columns:
+        df = normalizar_sector(df)
+        
     # Limpieza de PRODUCTO PRINCIPAL
     if "PRODUCTO PRINCIPAL" in df.columns:
         df["PRODUCTO PRINCIPAL"] = df["PRODUCTO PRINCIPAL"].astype(str).str.upper()
