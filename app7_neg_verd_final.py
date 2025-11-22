@@ -1170,9 +1170,11 @@ def render_faq() -> None:
             "las regiones basadas en la autoridad ambiental correspondiente.",
         ),
         (
-            "¿Puedo descargar la base de datos filtrada?",
-            "Sí. En la sección de Inicio encontrarás un botón para descargar el CSV con la versión normalizada "
-            "del dataset.",
+            "¿Por que La miel como negocio verde?",
+            "Encontramos un alto número de negocios verdes basados en miel y apicultura. Esto sucede porque "
+            "la apicultura es una actividad de muy bajo impacto ambiental, altamente alineada con los servicios "
+            "ecosistémicos y con altos beneficios económicos. Además, sus subproductos se integran naturalmente"
+            " a modelos de economía circular, lo que la hace coherente con los objetivos de Basura Cero.",
         ),
         (
             "¿Por qué las FNCER aparecen poco en los Negocios Verdes?",
