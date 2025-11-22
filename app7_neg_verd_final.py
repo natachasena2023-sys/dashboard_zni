@@ -1160,9 +1160,10 @@ def render_faq() -> None:
             "en datos abiertos.",
         ),
         (
-            "¿Cada cuánto se actualiza la información?",
-            "Puedes reemplazar el enlace del CSV por la versión más reciente publicada en GitHub u otra fuente. "
-            "La función de carga está cacheada para optimizar el rendimiento.",
+            "¿Qué son Servicios ecosistémicos?",
+            "“Los servicios ecosistémicos son los beneficios que nos da la naturaleza, como agua limpia,"
+            " polinización, captura de carbono y turismo de naturaleza. Son clave para la sostenibilidad y "
+            "se fortalecen con estrategias como Basura Cero.",
         ),
         (
             "¿Qué son Los Ecoproductos ?",
