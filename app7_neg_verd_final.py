@@ -911,13 +911,6 @@ def main():
             """
             <div class="banner-inferior">
                 🌿 Gracias por apoyar los Negocios Ecológicos 🌿
-            </div>
-            """,
-                    unsafe_allow_html=True,
-                )
-
-        st.markdown("""
-            <div style="text-align: center; font-size: 14px;">
                 <strong>Autores:</strong><br>
                 Paulina Noreña · pnorena@unal.edu.co<br>
                 Thomas Medina · thomasmedina519@gmail.com<br>
@@ -925,7 +918,9 @@ def main():
                 Natacha Ochoa · ochoa0917@hotmail.com<br>
                 Juan Ignacio García · juanignaciogarcia7@gmail.com
             </div>
-            """, unsafe_allow_html=True)
+            """,
+                    unsafe_allow_html=True,
+                )
         st.markdown(
                     """
             💚 *Proyecto académico realizado con Streamlit - Inspirado en la sostenibilidad y el diseño ecológico.*  
