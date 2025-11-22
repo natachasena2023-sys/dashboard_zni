@@ -1165,12 +1165,12 @@ def render_faq() -> None:
             "La función de carga está cacheada para optimizar el rendimiento.",
         ),
         (
-            "¿Cómo se realizó la limpieza de los datos?",
-            "Se estandarizaron nombres de columnas, se normalizaron productos y sectores, y se completaron "
-            "las regiones basadas en la autoridad ambiental correspondiente.",
+            "¿Qué son Los Ecoproductos ?",
+            "es un producto que cuida el ambiente porque usa menos recursos, genera menos residuos o "
+            "está hecho a partir de materiales reciclados o renovables.",
         ),
         (
-            "¿Por que La miel como negocio verde?",
+            "¿Por qué aparece tanto la miel en los negocios verdes?",
             "Encontramos un alto número de negocios verdes basados en miel y apicultura. Esto sucede porque "
             "la apicultura es una actividad de muy bajo impacto ambiental, altamente alineada con los servicios "
             "ecosistémicos y con altos beneficios económicos. Además, sus subproductos se integran naturalmente"
