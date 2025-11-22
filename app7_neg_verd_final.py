@@ -1175,9 +1175,12 @@ def render_faq() -> None:
             "del dataset.",
         ),
         (
-            "¿Qué puedo hacer si falta una imagen del banner?",
-            "La aplicación mostrará una advertencia y utilizará un marcador de posición, por lo que puedes "
-            "subir tus propias imágenes a la carpeta `img/` para personalizarlo.",
+            "¿Por qué las FNCER aparecen poco en los Negocios Verdes?",
+            "Encontramos que el sector de Fuentes No Convencionales de Energía Renovable está muy poco representado"
+            " en los Negocios Verdes. Esto se debe a que requiere altos niveles de inversión, trámites complejos y "
+            "capacidades técnicas avanzadas, lo que deja este mercado dominado por grandes empresas y por fuera del "
+            "ecosistema emprendedor. Esta baja presencia revela una gran oportunidad para impulsar proyectos territoriales "
+            "de energía limpia alineados con Basura Cero y la transición energética."
         ),
         (
             "¿✅ Qué significa “Mercado Regulado” en este contexto?",
