@@ -1090,6 +1090,12 @@ def render_sitemap() -> None:
         """
         Conoce la estructura general del dashboard para navegar con facilidad.  
         Cada sección está pensada para que encuentres la información clave sobre la estrategia **Basura Cero**.
+        
+        pnorena@unal.edu.co
+        thomasmedina519@gmail.com
+        angiecarorumer333@gmail.com
+        ochoa0917@hotmail.com
+        juanignaciogarcia7@gmail.com
         """
     )
 

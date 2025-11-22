@@ -1,0 +1,16 @@
+/* ============================================================
+   Estilos generales del Dashboard
+   ============================================================ */
+
+body {
+    background-color: #E6FFF7 !important;
+}
+
+h1, h2, h3 {
+    color: #155F4A;
+}
+
+.sidebar .sidebar-content {
+    background-color: #C9EFD9;
+}
+
