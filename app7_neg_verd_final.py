@@ -909,8 +909,8 @@ def main():
         
         st.markdown(
             """
-            <div class="banner-inferior">
-                🌿 autores 🌿
+            <div class="banner-inferior"; style="text-align: center; font-size: 14px;">
+                <strong>🌿 autores: 🌿 </strong><br>
                 Paulina Noreña · pnorena@unal.edu.co<br>
                 Thomas Medina · thomasmedina519@gmail.com<br>
                 Angie Ruiz · angiecarorumer333@gmail.com<br>
