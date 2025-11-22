@@ -255,7 +255,7 @@ def load_data(dummy: int = 1) -> pd.DataFrame:
     # Normalizar SECTOR
     if "SECTOR" in df.columns:
         df = normalizar_sector(df)
-        
+
     # Limpieza de PRODUCTO PRINCIPAL
     if "PRODUCTO PRINCIPAL" in df.columns:
         df["PRODUCTO PRINCIPAL"] = df["PRODUCTO PRINCIPAL"].astype(str).str.upper()
@@ -1178,6 +1178,11 @@ def render_faq() -> None:
             "¿Qué puedo hacer si falta una imagen del banner?",
             "La aplicación mostrará una advertencia y utilizará un marcador de posición, por lo que puedes "
             "subir tus propias imágenes a la carpeta `img/` para personalizarlo.",
+        ),
+        (
+            "¿✅ Qué significa “Mercado Regulado” en este contexto?",
+            " los negocios o servicios funcionan bajo un marco de regulación oficial, ya sea en energía, residuos, "
+            "aprovechamiento o sostenibilidad.",
         ),
     ]
 
