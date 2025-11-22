@@ -146,6 +146,21 @@ def limpiar_numeros(texto: str) -> str:
         return texto
     return re.sub(r"^\s*[\d\.]+\s*", "", str(texto))
 
+def normalizar_sector(df):
+    """
+    Normaliza la columna 'SECTOR':
+    - Quita espacios al inicio y al final
+    - Convierte todo a MAYÚSCULAS
+
+    Parámetros:
+        df (pd.DataFrame): DataFrame a procesar
+
+    Retorna:
+        pd.DataFrame: DataFrame con 'SECTOR' normalizado
+    """
+    df['SECTOR'] = df['SECTOR'].astype(str).str.strip().str.upper()
+    return df
+
 def tipo_relacion_basura_cero(fila):
     """Detecta palabras clave y asigna categoría de economía circular."""
     texto = f"{fila['DESCRIPCIÓN']} {fila['SECTOR']} {fila['SUBSECTOR']}".lower()
